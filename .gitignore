@@ -1,0 +1,6 @@
+bin/
+energiasolar.db
+*.class
+.idea/
+*.iml
+out/
