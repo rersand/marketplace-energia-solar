@@ -1,0 +1,111 @@
+digraph DominioMarketplace {
+    graph [
+        rankdir=TB,
+        splines=ortho,
+        nodesep=1.2,
+        ranksep=1.45,
+        fontname="DejaVu Sans",
+        pad="0.4",
+        bgcolor="white"
+    ];
+    node [shape=plaintext, fontname="DejaVu Sans"];
+    edge [
+        fontname="DejaVu Sans",
+        fontsize=11,
+        fontcolor="#000000",
+        color="#8B0000",
+        dir=none,
+        penwidth=1.1,
+        labeldistance=2.4,
+        labelangle=12,
+        labelfontsize=10
+    ];
+
+    Usuario [label=<
+    <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4" COLOR="#8B0000" BGCOLOR="#FFFFCC">
+        <TR><TD ALIGN="CENTER"><I><B>Usuario</B></I><BR/><FONT POINT-SIZE="10">{abstract}</FONT></TD></TR>
+        <TR><TD ALIGN="LEFT" BALIGN="LEFT" BORDER="1" SIDES="T" COLOR="#8B0000"><FONT COLOR="#2b4c9b">&#9670;</FONT> &#8211; nome<BR/><FONT COLOR="#2b4c9b">&#9670;</FONT> &#8211; email<BR/><FONT COLOR="#2b4c9b">&#9670;</FONT> &#8211; senha<BR/><FONT COLOR="#2b4c9b">&#9670;</FONT> &#8211; cidade<BR/><FONT COLOR="#2b4c9b">&#9670;</FONT> &#8211; uf</TD></TR>
+        <TR><TD ALIGN="LEFT" BALIGN="LEFT" BORDER="1" SIDES="T" COLOR="#8B0000"><FONT COLOR="#9b2b7a">&#9670;</FONT> + Cadastrar()<BR/><FONT COLOR="#9b2b7a">&#9670;</FONT> + Autenticar()<BR/><FONT COLOR="#9b2b7a">&#9670;</FONT> + <I>getTipo()</I><BR/><FONT COLOR="#9b2b7a">&#9670;</FONT> + <I>rotuloPerfil()</I><BR/><FONT COLOR="#9b2b7a">&#9670;</FONT> + <I>podeOfertar()</I><BR/><FONT COLOR="#9b2b7a">&#9670;</FONT> + <I>podeComprar()</I></TD></TR>
+    </TABLE>>];
+
+    CentroDistribuicao [label=<
+    <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4" COLOR="#8B0000" BGCOLOR="#FFFFCC">
+        <TR><TD ALIGN="CENTER"><B>CentroDistribuicao</B></TD></TR>
+        <TR><TD ALIGN="LEFT" BALIGN="LEFT" BORDER="1" SIDES="T" COLOR="#8B0000"><FONT COLOR="#2b4c9b">&#9670;</FONT> &#8211; nome<BR/><FONT COLOR="#2b4c9b">&#9670;</FONT> &#8211; cidade<BR/><FONT COLOR="#2b4c9b">&#9670;</FONT> &#8211; uf<BR/><FONT COLOR="#2b4c9b">&#9670;</FONT> &#8211; capacidadeMwh</TD></TR>
+        <TR><TD ALIGN="LEFT" BALIGN="LEFT" BORDER="1" SIDES="T" COLOR="#8B0000"><FONT COLOR="#9b2b7a">&#9670;</FONT> + ListarCentros()<BR/><FONT COLOR="#9b2b7a">&#9670;</FONT> + BuscarPorId()</TD></TR>
+    </TABLE>>];
+
+    UnidadeConsumidora [label=<
+    <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4" COLOR="#8B0000" BGCOLOR="#FFFFCC">
+        <TR><TD ALIGN="CENTER"><B>UnidadeConsumidora</B></TD></TR>
+        <TR><TD ALIGN="LEFT" BALIGN="LEFT" BORDER="1" SIDES="T" COLOR="#8B0000"><FONT COLOR="#2b4c9b">&#9670;</FONT> &#8211; numeroUc<BR/><FONT COLOR="#2b4c9b">&#9670;</FONT> &#8211; endereco<BR/><FONT COLOR="#2b4c9b">&#9670;</FONT> &#8211; capacidadeGeracaoKwp</TD></TR>
+        <TR><TD ALIGN="LEFT" BALIGN="LEFT" BORDER="1" SIDES="T" COLOR="#8B0000"><FONT COLOR="#9b2b7a">&#9670;</FONT> + CadastrarUnidade()<BR/><FONT COLOR="#9b2b7a">&#9670;</FONT> + ListarPorUsuario()<BR/><FONT COLOR="#9b2b7a">&#9670;</FONT> + AtualizarUnidade()<BR/><FONT COLOR="#9b2b7a">&#9670;</FONT> + ExcluirUnidade()</TD></TR>
+    </TABLE>>];
+
+    RegistroEnergia [label=<
+    <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4" COLOR="#8B0000" BGCOLOR="#FFFFCC">
+        <TR><TD ALIGN="CENTER"><B>RegistroEnergia</B></TD></TR>
+        <TR><TD ALIGN="LEFT" BALIGN="LEFT" BORDER="1" SIDES="T" COLOR="#8B0000"><FONT COLOR="#2b4c9b">&#9670;</FONT> &#8211; mesReferencia<BR/><FONT COLOR="#2b4c9b">&#9670;</FONT> &#8211; energiaGeradaKwh<BR/><FONT COLOR="#2b4c9b">&#9670;</FONT> &#8211; energiaConsumidaKwh<BR/><FONT COLOR="#2b4c9b">&#9670;</FONT> &#8211; excedenteKwh</TD></TR>
+        <TR><TD ALIGN="LEFT" BALIGN="LEFT" BORDER="1" SIDES="T" COLOR="#8B0000"><FONT COLOR="#9b2b7a">&#9670;</FONT> + LancarRegistro()<BR/><FONT COLOR="#9b2b7a">&#9670;</FONT> + ListarPorUnidade()</TD></TR>
+    </TABLE>>];
+
+    CreditoEnergia [label=<
+    <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4" COLOR="#8B0000" BGCOLOR="#FFFFCC">
+        <TR><TD ALIGN="CENTER"><B>CreditoEnergia</B></TD></TR>
+        <TR><TD ALIGN="LEFT" BALIGN="LEFT" BORDER="1" SIDES="T" COLOR="#8B0000"><FONT COLOR="#2b4c9b">&#9670;</FONT> &#8211; quantidadeKwh<BR/><FONT COLOR="#2b4c9b">&#9670;</FONT> &#8211; quantidadeDisponivelKwh<BR/><FONT COLOR="#2b4c9b">&#9670;</FONT> &#8211; dataValidade<BR/><FONT COLOR="#2b4c9b">&#9670;</FONT> &#8211; status</TD></TR>
+        <TR><TD ALIGN="LEFT" BALIGN="LEFT" BORDER="1" SIDES="T" COLOR="#8B0000"><FONT COLOR="#9b2b7a">&#9670;</FONT> &#8211; GerarCredito()<BR/><FONT COLOR="#9b2b7a">&#9670;</FONT> + CreditosDisponiveis()<BR/><FONT COLOR="#9b2b7a">&#9670;</FONT> + SaldoTotalDisponivel()</TD></TR>
+    </TABLE>>];
+
+    OfertaVenda [label=<
+    <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4" COLOR="#8B0000" BGCOLOR="#FFFFCC">
+        <TR><TD ALIGN="CENTER"><B>OfertaVenda</B></TD></TR>
+        <TR><TD ALIGN="LEFT" BALIGN="LEFT" BORDER="1" SIDES="T" COLOR="#8B0000"><FONT COLOR="#2b4c9b">&#9670;</FONT> &#8211; quantidadeKwh<BR/><FONT COLOR="#2b4c9b">&#9670;</FONT> &#8211; quantidadeDisponivelKwh<BR/><FONT COLOR="#2b4c9b">&#9670;</FONT> &#8211; precoKwh<BR/><FONT COLOR="#2b4c9b">&#9670;</FONT> &#8211; status</TD></TR>
+        <TR><TD ALIGN="LEFT" BALIGN="LEFT" BORDER="1" SIDES="T" COLOR="#8B0000"><FONT COLOR="#9b2b7a">&#9670;</FONT> + PublicarOferta()<BR/><FONT COLOR="#9b2b7a">&#9670;</FONT> + ListarOfertasAbertas()<BR/><FONT COLOR="#9b2b7a">&#9670;</FONT> + EditarPreco()<BR/><FONT COLOR="#9b2b7a">&#9670;</FONT> + CancelarOferta()<BR/><FONT COLOR="#9b2b7a">&#9670;</FONT> + ExcluirOferta()</TD></TR>
+    </TABLE>>];
+
+    Transacao [label=<
+    <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4" COLOR="#8B0000" BGCOLOR="#FFFFCC">
+        <TR><TD ALIGN="CENTER"><B>Transacao</B></TD></TR>
+        <TR><TD ALIGN="LEFT" BALIGN="LEFT" BORDER="1" SIDES="T" COLOR="#8B0000"><FONT COLOR="#2b4c9b">&#9670;</FONT> &#8211; quantidadeKwh<BR/><FONT COLOR="#2b4c9b">&#9670;</FONT> &#8211; valorTotal<BR/><FONT COLOR="#2b4c9b">&#9670;</FONT> &#8211; dataTransacao</TD></TR>
+        <TR><TD ALIGN="LEFT" BALIGN="LEFT" BORDER="1" SIDES="T" COLOR="#8B0000"><FONT COLOR="#9b2b7a">&#9670;</FONT> + Comprar()<BR/><FONT COLOR="#9b2b7a">&#9670;</FONT> + ExtratoDeCompras()<BR/><FONT COLOR="#9b2b7a">&#9670;</FONT> + ExtratoDeVendas()</TD></TR>
+    </TABLE>>];
+
+    // ---- Agrupamento em níveis (distribuição em U) ----
+    {rank=same; CentroDistribuicao; Usuario; CentroDistribuicao -> Usuario [style=invis]}
+    {rank=same; UnidadeConsumidora; Transacao; UnidadeConsumidora -> Transacao [style=invis]}
+    {rank=same; RegistroEnergia; OfertaVenda; RegistroEnergia -> OfertaVenda [style=invis]}
+
+    // ---- Associações ----
+    Usuario            -> UnidadeConsumidora [ dir=both, arrowtail=diamond, arrowhead=none,xlabel=<<I>possui</I>>,   taillabel="1", headlabel="0..n"];
+    CentroDistribuicao -> UnidadeConsumidora [ dir=both, arrowtail=odiamond, arrowhead=none,xlabel=<<I>atende</I>>,   taillabel="1", headlabel="0..n"];
+    UnidadeConsumidora -> RegistroEnergia    [ dir=both, arrowtail=diamond, arrowhead=none,xlabel=<<I>registra</I>>, taillabel="1", headlabel="0..n"];
+    RegistroEnergia    -> CreditoEnergia     [ dir=both, arrowtail=diamond, arrowhead=none,xlabel=<<I>origina</I>>,  taillabel="1", headlabel="0..1"];
+    CreditoEnergia     -> OfertaVenda        [xlabel=<<I>lastreia</I>&#160;&#160;<BR/><FONT POINT-SIZE="9"> </FONT>>, taillabel="1", headlabel="0..n", constraint=false];
+    OfertaVenda        -> Transacao          [xlabel=<<I>recebe</I>>,   taillabel="1", headlabel="0..n", constraint=false];
+    Usuario            -> Transacao          [xlabel=<<I>compra</I>>,   taillabel="1", headlabel="0..n", constraint=false];
+
+    Gerador [label=<
+    <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4" COLOR="#8B0000" BGCOLOR="#FFFFCC">
+        <TR><TD ALIGN="CENTER"><B>Gerador</B></TD></TR>
+        <TR><TD ALIGN="LEFT" BALIGN="LEFT" BORDER="1" SIDES="T" COLOR="#8B0000"><FONT COLOR="#9b2b7a">&#9670;</FONT> + podeOfertar() : true<BR/><FONT COLOR="#9b2b7a">&#9670;</FONT> + podeComprar() : false</TD></TR>
+    </TABLE>>];
+
+    Consumidor [label=<
+    <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4" COLOR="#8B0000" BGCOLOR="#FFFFCC">
+        <TR><TD ALIGN="CENTER"><B>Consumidor</B></TD></TR>
+        <TR><TD ALIGN="LEFT" BALIGN="LEFT" BORDER="1" SIDES="T" COLOR="#8B0000"><FONT COLOR="#9b2b7a">&#9670;</FONT> + podeOfertar() : false<BR/><FONT COLOR="#9b2b7a">&#9670;</FONT> + podeComprar() : true</TD></TR>
+    </TABLE>>];
+
+    Prosumidor [label=<
+    <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4" COLOR="#8B0000" BGCOLOR="#FFFFCC">
+        <TR><TD ALIGN="CENTER"><B>Prosumidor</B></TD></TR>
+        <TR><TD ALIGN="LEFT" BALIGN="LEFT" BORDER="1" SIDES="T" COLOR="#8B0000"><FONT COLOR="#9b2b7a">&#9670;</FONT> + podeOfertar() : true<BR/><FONT COLOR="#9b2b7a">&#9670;</FONT> + podeComprar() : true</TD></TR>
+    </TABLE>>];
+
+    // ---- Heranca (generalizacao): triangulo vazado apontando para a superclasse ----
+    {rank=same; Gerador; Consumidor; Prosumidor}
+    edge [dir=forward, arrowtail=none, arrowhead=onormal, style=solid, xlabel=""];
+    Gerador    -> Usuario [taillabel="", headlabel=""];
+    Consumidor -> Usuario [taillabel="", headlabel=""];
+    Prosumidor -> Usuario [taillabel="", headlabel=""];
+}

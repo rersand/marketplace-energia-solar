@@ -1,0 +1,131 @@
+digraph DER {
+    graph [
+        rankdir=LR,
+        splines=polyline,
+        nodesep=0.9,
+        ranksep=2.4,
+        fontname="DejaVu Sans",
+        pad="0.5",
+        bgcolor="white"
+    ];
+
+    node [
+        shape=plaintext,
+        fontname="DejaVu Sans"
+    ];
+
+    edge [
+        fontname="DejaVu Sans",
+        fontsize=11,
+        color="#444444",
+        dir=both,
+        arrowtail=tee,
+        arrowhead=crow,
+        penwidth=1.2
+    ];
+
+    usuario [label=<
+        <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="6" COLOR="#1b2a3a">
+            <TR><TD BGCOLOR="#1b2a3a" COLSPAN="2"><FONT COLOR="white" POINT-SIZE="14"><B>USUARIO</B></FONT></TD></TR>
+            <TR><TD ALIGN="LEFT"><FONT COLOR="#b8860b"><B>PK</B></FONT></TD><TD ALIGN="LEFT"><B>id</B> : INTEGER</TD></TR>
+            <TR><TD ALIGN="LEFT"></TD><TD ALIGN="LEFT">nome : TEXT</TD></TR>
+            <TR><TD ALIGN="LEFT"><FONT COLOR="#2e8b57"><B>UK</B></FONT></TD><TD ALIGN="LEFT">email : TEXT</TD></TR>
+            <TR><TD ALIGN="LEFT"></TD><TD ALIGN="LEFT">senha_hash : TEXT</TD></TR>
+            <TR><TD ALIGN="LEFT"></TD><TD ALIGN="LEFT">senha_salt : TEXT</TD></TR>
+            <TR><TD ALIGN="LEFT"></TD><TD ALIGN="LEFT">tipo : TEXT</TD></TR>
+            <TR><TD ALIGN="LEFT"></TD><TD ALIGN="LEFT">cidade : TEXT</TD></TR>
+            <TR><TD ALIGN="LEFT"></TD><TD ALIGN="LEFT">uf : TEXT</TD></TR>
+            <TR><TD ALIGN="LEFT"></TD><TD ALIGN="LEFT">data_cadastro : TEXT</TD></TR>
+        </TABLE>
+    >];
+
+    centro [label=<
+        <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="6" COLOR="#1b2a3a">
+            <TR><TD BGCOLOR="#1b2a3a" COLSPAN="2"><FONT COLOR="white" POINT-SIZE="14"><B>CENTRO_DISTRIBUICAO</B></FONT></TD></TR>
+            <TR><TD ALIGN="LEFT"><FONT COLOR="#b8860b"><B>PK</B></FONT></TD><TD ALIGN="LEFT"><B>id</B> : INTEGER</TD></TR>
+            <TR><TD ALIGN="LEFT"></TD><TD ALIGN="LEFT">nome : TEXT</TD></TR>
+            <TR><TD ALIGN="LEFT"></TD><TD ALIGN="LEFT">cidade : TEXT</TD></TR>
+            <TR><TD ALIGN="LEFT"></TD><TD ALIGN="LEFT">uf : TEXT</TD></TR>
+            <TR><TD ALIGN="LEFT"></TD><TD ALIGN="LEFT">capacidade_mwh : REAL</TD></TR>
+        </TABLE>
+    >];
+
+    unidade [label=<
+        <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="6" COLOR="#1b2a3a">
+            <TR><TD BGCOLOR="#1b2a3a" COLSPAN="2"><FONT COLOR="white" POINT-SIZE="14"><B>UNIDADE_CONSUMIDORA</B></FONT></TD></TR>
+            <TR><TD ALIGN="LEFT"><FONT COLOR="#b8860b"><B>PK</B></FONT></TD><TD ALIGN="LEFT"><B>id</B> : INTEGER</TD></TR>
+            <TR><TD ALIGN="LEFT"><FONT COLOR="#c0392b"><B>FK</B></FONT></TD><TD ALIGN="LEFT">usuario_id : INTEGER</TD></TR>
+            <TR><TD ALIGN="LEFT"><FONT COLOR="#c0392b"><B>FK</B></FONT></TD><TD ALIGN="LEFT">centro_distribuicao_id : INTEGER</TD></TR>
+            <TR><TD ALIGN="LEFT"><FONT COLOR="#2e8b57"><B>UK</B></FONT></TD><TD ALIGN="LEFT">numero_uc : TEXT</TD></TR>
+            <TR><TD ALIGN="LEFT"></TD><TD ALIGN="LEFT">endereco : TEXT</TD></TR>
+            <TR><TD ALIGN="LEFT"></TD><TD ALIGN="LEFT">capacidade_geracao_kwp : REAL</TD></TR>
+        </TABLE>
+    >];
+
+    registro [label=<
+        <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="6" COLOR="#1b2a3a">
+            <TR><TD BGCOLOR="#1b2a3a" COLSPAN="2"><FONT COLOR="white" POINT-SIZE="14"><B>REGISTRO_ENERGIA</B></FONT></TD></TR>
+            <TR><TD ALIGN="LEFT"><FONT COLOR="#b8860b"><B>PK</B></FONT></TD><TD ALIGN="LEFT"><B>id</B> : INTEGER</TD></TR>
+            <TR><TD ALIGN="LEFT"><FONT COLOR="#c0392b"><B>FK</B></FONT></TD><TD ALIGN="LEFT">unidade_id : INTEGER</TD></TR>
+            <TR><TD ALIGN="LEFT"></TD><TD ALIGN="LEFT">mes_referencia : TEXT</TD></TR>
+            <TR><TD ALIGN="LEFT"></TD><TD ALIGN="LEFT">energia_gerada_kwh : REAL</TD></TR>
+            <TR><TD ALIGN="LEFT"></TD><TD ALIGN="LEFT">energia_consumida_kwh : REAL</TD></TR>
+            <TR><TD ALIGN="LEFT"></TD><TD ALIGN="LEFT">excedente_kwh : REAL</TD></TR>
+            <TR><TD ALIGN="LEFT"></TD><TD ALIGN="LEFT">data_registro : TEXT</TD></TR>
+            <TR><TD ALIGN="LEFT"><FONT COLOR="#2e8b57"><B>UK</B></FONT></TD><TD ALIGN="LEFT"><I>(unidade_id, mes_referencia)</I></TD></TR>
+        </TABLE>
+    >];
+
+    credito [label=<
+        <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="6" COLOR="#1b2a3a">
+            <TR><TD BGCOLOR="#1b2a3a" COLSPAN="2"><FONT COLOR="white" POINT-SIZE="14"><B>CREDITO_ENERGIA</B></FONT></TD></TR>
+            <TR><TD ALIGN="LEFT"><FONT COLOR="#b8860b"><B>PK</B></FONT></TD><TD ALIGN="LEFT"><B>id</B> : INTEGER</TD></TR>
+            <TR><TD ALIGN="LEFT"><FONT COLOR="#c0392b"><B>FK</B></FONT></TD><TD ALIGN="LEFT">unidade_id : INTEGER</TD></TR>
+            <TR><TD ALIGN="LEFT"><FONT COLOR="#c0392b"><B>FK</B></FONT> <FONT COLOR="#2e8b57"><B>UK</B></FONT></TD><TD ALIGN="LEFT">registro_id : INTEGER</TD></TR>
+            <TR><TD ALIGN="LEFT"></TD><TD ALIGN="LEFT">quantidade_kwh : REAL</TD></TR>
+            <TR><TD ALIGN="LEFT"></TD><TD ALIGN="LEFT">quantidade_disponivel_kwh : REAL</TD></TR>
+            <TR><TD ALIGN="LEFT"></TD><TD ALIGN="LEFT">data_geracao : TEXT</TD></TR>
+            <TR><TD ALIGN="LEFT"></TD><TD ALIGN="LEFT">data_validade : TEXT</TD></TR>
+            <TR><TD ALIGN="LEFT"></TD><TD ALIGN="LEFT">status : TEXT</TD></TR>
+        </TABLE>
+    >];
+
+    oferta [label=<
+        <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="6" COLOR="#1b2a3a">
+            <TR><TD BGCOLOR="#1b2a3a" COLSPAN="2"><FONT COLOR="white" POINT-SIZE="14"><B>OFERTA_VENDA</B></FONT></TD></TR>
+            <TR><TD ALIGN="LEFT"><FONT COLOR="#b8860b"><B>PK</B></FONT></TD><TD ALIGN="LEFT"><B>id</B> : INTEGER</TD></TR>
+            <TR><TD ALIGN="LEFT"><FONT COLOR="#c0392b"><B>FK</B></FONT></TD><TD ALIGN="LEFT">credito_id : INTEGER</TD></TR>
+            <TR><TD ALIGN="LEFT"><FONT COLOR="#c0392b"><B>FK</B></FONT></TD><TD ALIGN="LEFT">vendedor_id : INTEGER</TD></TR>
+            <TR><TD ALIGN="LEFT"><FONT COLOR="#c0392b"><B>FK</B></FONT></TD><TD ALIGN="LEFT">centro_distribuicao_id : INTEGER</TD></TR>
+            <TR><TD ALIGN="LEFT"></TD><TD ALIGN="LEFT">quantidade_kwh : REAL</TD></TR>
+            <TR><TD ALIGN="LEFT"></TD><TD ALIGN="LEFT">quantidade_disponivel_kwh : REAL</TD></TR>
+            <TR><TD ALIGN="LEFT"></TD><TD ALIGN="LEFT">preco_kwh : REAL</TD></TR>
+            <TR><TD ALIGN="LEFT"></TD><TD ALIGN="LEFT">status : TEXT</TD></TR>
+            <TR><TD ALIGN="LEFT"></TD><TD ALIGN="LEFT">data_criacao : TEXT</TD></TR>
+        </TABLE>
+    >];
+
+    transacao [label=<
+        <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="6" COLOR="#1b2a3a">
+            <TR><TD BGCOLOR="#1b2a3a" COLSPAN="2"><FONT COLOR="white" POINT-SIZE="14"><B>TRANSACAO</B></FONT></TD></TR>
+            <TR><TD ALIGN="LEFT"><FONT COLOR="#b8860b"><B>PK</B></FONT></TD><TD ALIGN="LEFT"><B>id</B> : INTEGER</TD></TR>
+            <TR><TD ALIGN="LEFT"><FONT COLOR="#c0392b"><B>FK</B></FONT></TD><TD ALIGN="LEFT">oferta_id : INTEGER</TD></TR>
+            <TR><TD ALIGN="LEFT"><FONT COLOR="#c0392b"><B>FK</B></FONT></TD><TD ALIGN="LEFT">comprador_id : INTEGER</TD></TR>
+            <TR><TD ALIGN="LEFT"></TD><TD ALIGN="LEFT">quantidade_kwh : REAL</TD></TR>
+            <TR><TD ALIGN="LEFT"></TD><TD ALIGN="LEFT">valor_total : REAL</TD></TR>
+            <TR><TD ALIGN="LEFT"></TD><TD ALIGN="LEFT">data_transacao : TEXT</TD></TR>
+        </TABLE>
+    >];
+
+    // Relacionamentos (notacao pe-de-galinha: 1 -> N)
+    usuario   -> unidade   [label="possui\n(1:N)", arrowhead=crow];
+    centro    -> unidade   [label="atende\n(1:N)", arrowhead=crow];
+    unidade   -> registro  [label="registra\n(1:N)", arrowhead=crow];
+    registro  -> credito   [label="origina\n(1:1)", arrowhead=tee];
+    unidade   -> credito   [label="acumula\n(1:N)", arrowhead=crow];
+    credito   -> oferta    [label="lastreia\n(1:N)", arrowhead=crow];
+    usuario   -> oferta    [label="publica\n(1:N)", arrowhead=crow];
+    centro    -> oferta    [label="intermedia\n(1:N)", arrowhead=crow];
+    oferta    -> transacao [label="recebe\n(1:N)", arrowhead=crow];
+    usuario   -> transacao [label="compra\n(1:N)", arrowhead=crow];
+}

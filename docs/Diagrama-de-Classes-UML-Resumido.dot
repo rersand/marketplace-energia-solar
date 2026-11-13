@@ -1,0 +1,305 @@
+digraph ClassDiagramResumido {
+    graph [
+        rankdir=LR,
+        splines=spline,
+        nodesep=0.35,
+        ranksep=1.5,
+        fontname="DejaVu Sans",
+        pad="0.4",
+        bgcolor="white",
+        compound=true
+    ];
+    node [shape=plaintext, fontname="DejaVu Sans"];
+    edge [fontname="DejaVu Sans", fontsize=10, penwidth=1.0];
+
+    // ================= WEB =================
+    subgraph cluster_web {
+        label=<<FONT POINT-SIZE="14"><B>web</B></FONT>>;
+        labelloc="t"; style="rounded"; color="#1f6f8b"; penwidth=1.8; margin=12;
+        fontname="DejaVu Sans";
+
+        ServidorWeb [label=<
+        <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4" COLOR="#1f6f8b">
+            <TR><TD BGCOLOR="#1f6f8b"><FONT COLOR="white" POINT-SIZE="12"><B>ServidorWeb</B></FONT></TD></TR>
+            <TR><TD ALIGN="LEFT">+ iniciar()</TD></TR>
+        </TABLE>>];
+
+        LoginHandler [label=<
+        <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4" COLOR="#1f6f8b">
+            <TR><TD BGCOLOR="#1f6f8b"><FONT COLOR="white" POINT-SIZE="12"><B>LoginHandler</B></FONT></TD></TR>
+            <TR><TD ALIGN="LEFT">+ handle()</TD></TR>
+        </TABLE>>];
+
+
+        UnidadeHandler [label=<
+        <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4" COLOR="#1f6f8b">
+            <TR><TD BGCOLOR="#1f6f8b"><FONT COLOR="white" POINT-SIZE="12"><B>UnidadeHandler</B></FONT></TD></TR>
+            <TR><TD ALIGN="LEFT">+ handle()</TD></TR>
+        </TABLE>>];
+
+        EnergiaHandler [label=<
+        <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4" COLOR="#1f6f8b">
+            <TR><TD BGCOLOR="#1f6f8b"><FONT COLOR="white" POINT-SIZE="12"><B>EnergiaHandler</B></FONT></TD></TR>
+            <TR><TD ALIGN="LEFT">+ handle()</TD></TR>
+        </TABLE>>];
+
+        VendasHandler [label=<
+        <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4" COLOR="#1f6f8b">
+            <TR><TD BGCOLOR="#1f6f8b"><FONT COLOR="white" POINT-SIZE="12"><B>VendasHandler</B></FONT></TD></TR>
+            <TR><TD ALIGN="LEFT">+ handle()</TD></TR>
+        </TABLE>>];
+
+        ComprasHandler [label=<
+        <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4" COLOR="#1f6f8b">
+            <TR><TD BGCOLOR="#1f6f8b"><FONT COLOR="white" POINT-SIZE="12"><B>ComprasHandler</B></FONT></TD></TR>
+            <TR><TD ALIGN="LEFT">+ handle()</TD></TR>
+        </TABLE>>];
+
+        MarketplaceHandler [label=<
+        <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4" COLOR="#1f6f8b">
+            <TR><TD BGCOLOR="#1f6f8b"><FONT COLOR="white" POINT-SIZE="12"><B>MarketplaceHandler</B></FONT></TD></TR>
+            <TR><TD ALIGN="LEFT">+ handle()</TD></TR>
+        </TABLE>>];
+
+        RelatorioHandler [label=<
+        <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4" COLOR="#1f6f8b">
+            <TR><TD BGCOLOR="#1f6f8b"><FONT COLOR="white" POINT-SIZE="12"><B>RelatorioHandler</B></FONT></TD></TR>
+            <TR><TD ALIGN="LEFT">+ handle()</TD></TR>
+        </TABLE>>];
+
+        Utilitarios [label=<
+        <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4" COLOR="#7f8c8d">
+            <TR><TD BGCOLOR="#7f8c8d"><FONT COLOR="white" POINT-SIZE="11"><B>Http&#160;&#183;&#160;Layout&#160;&#183;&#160;Formulario&#160;&#183;&#160;Autenticacao&#160;&#183;&#160;SessaoManager</B></FONT></TD></TR>
+            <TR><TD ALIGN="LEFT"><FONT POINT-SIZE="10"><I>utilitários usados por todos os Handlers</I></FONT></TD></TR>
+        </TABLE>>];
+    }
+
+    // ================= SERVICE =================
+    subgraph cluster_service {
+        label=<<FONT POINT-SIZE="14"><B>service</B></FONT>>;
+        labelloc="t"; style="rounded"; color="#7d3c98"; penwidth=1.8; margin=12;
+        fontname="DejaVu Sans";
+
+        AutenticacaoService [label=<
+        <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4" COLOR="#7d3c98">
+            <TR><TD BGCOLOR="#7d3c98"><FONT COLOR="white" POINT-SIZE="12"><B>AutenticacaoService</B></FONT></TD></TR>
+            <TR><TD ALIGN="LEFT" BALIGN="LEFT">+ cadastrar()<BR/>+ autenticar()</TD></TR>
+        </TABLE>>];
+
+        EnergiaService [label=<
+        <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4" COLOR="#7d3c98">
+            <TR><TD BGCOLOR="#7d3c98"><FONT COLOR="white" POINT-SIZE="12"><B>EnergiaService</B></FONT></TD></TR>
+            <TR><TD ALIGN="LEFT" BALIGN="LEFT">+ lancarRegistro()<BR/>+ creditosDisponiveis()<BR/>+ saldoTotalDisponivel()</TD></TR>
+        </TABLE>>];
+
+        MarketplaceService [label=<
+        <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4" COLOR="#7d3c98">
+            <TR><TD BGCOLOR="#7d3c98"><FONT COLOR="white" POINT-SIZE="12"><B>MarketplaceService</B></FONT></TD></TR>
+            <TR><TD ALIGN="LEFT" BALIGN="LEFT">+ publicarOferta()<BR/>+ comprar()<BR/>+ editarPreco()<BR/>+ cancelarOferta()<BR/>+ excluirOferta()</TD></TR>
+        </TABLE>>];
+
+        UnidadeService [label=<
+        <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4" COLOR="#7d3c98">
+            <TR><TD BGCOLOR="#7d3c98"><FONT COLOR="white" POINT-SIZE="12"><B>UnidadeService</B></FONT></TD></TR>
+            <TR><TD ALIGN="LEFT" BALIGN="LEFT">+ cadastrar()<BR/>+ listarDoUsuario()<BR/>+ atualizar()<BR/>+ excluir()</TD></TR>
+        </TABLE>>];
+
+        RegraNegocioException [label=<
+        <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4" COLOR="#7d3c98">
+            <TR><TD BGCOLOR="#7d3c98"><FONT COLOR="#ecdcf3" POINT-SIZE="9">«exception»</FONT><BR/><FONT COLOR="white" POINT-SIZE="12"><B>RegraNegocioException</B></FONT></TD></TR>
+            <TR><TD ALIGN="LEFT"><FONT POINT-SIZE="10">extends RuntimeException</FONT></TD></TR>
+        </TABLE>>];
+
+        RelatorioService [label=<
+        <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4" COLOR="#7d3c98">
+            <TR><TD BGCOLOR="#7d3c98"><FONT COLOR="white" POINT-SIZE="12"><B>RelatorioService</B></FONT></TD></TR>
+            <TR><TD ALIGN="LEFT" BALIGN="LEFT">+ relatorioPorCentroDistribuicao()<BR/>+ extratoComprasDoUsuario()<BR/>+ extratoVendasDoUsuario()</TD></TR>
+        </TABLE>>];
+    }
+
+    // ================= DAO =================
+    subgraph cluster_dao {
+        label=<<FONT POINT-SIZE="14"><B>dao</B></FONT>>;
+        labelloc="t"; style="rounded"; color="#c0392b"; penwidth=1.8; margin=12;
+        fontname="DejaVu Sans";
+
+        AbstractDAO [label=<
+        <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4" COLOR="#c0392b">
+            <TR><TD BGCOLOR="#c0392b"><FONT COLOR="white" POINT-SIZE="12"><I><B>AbstractDAO&lt;T&gt;</B></I></FONT><BR/><FONT COLOR="#f6d5d1" POINT-SIZE="9">{abstract}</FONT></TD></TR>
+            <TR><TD ALIGN="LEFT" BALIGN="LEFT">+ listarTodos() : List&lt;T&gt;<BR/>+ buscarPorId(id) : Optional&lt;T&gt;<BR/>+ excluirPorId(id)<BR/># consultar(sql, params)<BR/># contar(sql, params) : int<BR/># inserirRetornandoId(sql, params)<BR/># <I>nomeTabela()</I><BR/># <I>mapear(rs)</I> : T</TD></TR>
+        </TABLE>>];
+
+        ConexaoBD [label=<
+        <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4" COLOR="#c0392b">
+            <TR><TD BGCOLOR="#c0392b"><FONT COLOR="white" POINT-SIZE="12"><B>ConexaoBD</B></FONT></TD></TR>
+            <TR><TD ALIGN="LEFT" BALIGN="LEFT">+ obterConexao()<BR/>+ emTransacao(operacao)<BR/><FONT POINT-SIZE="10"><I>conexões dos DAOs e transações dos services</I></FONT></TD></TR>
+        </TABLE>>];
+
+        UsuarioDAO [label=<
+        <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4" COLOR="#c0392b">
+            <TR><TD BGCOLOR="#c0392b"><FONT COLOR="white" POINT-SIZE="12"><B>UsuarioDAO</B></FONT></TD></TR>
+            <TR><TD ALIGN="LEFT" BALIGN="LEFT">+ inserir()<BR/>+ buscarPorEmail()</TD></TR>
+        </TABLE>>];
+
+        CentroDistribuicaoDAO [label=<
+        <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4" COLOR="#c0392b">
+            <TR><TD BGCOLOR="#c0392b"><FONT COLOR="white" POINT-SIZE="12"><B>CentroDistribuicaoDAO</B></FONT></TD></TR>
+            <TR><TD ALIGN="LEFT" BALIGN="LEFT">+ listarTodos()<BR/>+ buscarPorId()</TD></TR>
+        </TABLE>>];
+
+        UnidadeConsumidoraDAO [label=<
+        <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4" COLOR="#c0392b">
+            <TR><TD BGCOLOR="#c0392b"><FONT COLOR="white" POINT-SIZE="12"><B>UnidadeConsumidoraDAO</B></FONT></TD></TR>
+            <TR><TD ALIGN="LEFT" BALIGN="LEFT">+ inserir()<BR/>+ atualizar()<BR/>+ listarPorUsuario()</TD></TR>
+        </TABLE>>];
+
+        RegistroEnergiaDAO [label=<
+        <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4" COLOR="#c0392b">
+            <TR><TD BGCOLOR="#c0392b"><FONT COLOR="white" POINT-SIZE="12"><B>RegistroEnergiaDAO</B></FONT></TD></TR>
+            <TR><TD ALIGN="LEFT" BALIGN="LEFT">+ inserir()<BR/>+ listarPorUnidade()</TD></TR>
+        </TABLE>>];
+
+        CreditoEnergiaDAO [label=<
+        <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4" COLOR="#c0392b">
+            <TR><TD BGCOLOR="#c0392b"><FONT COLOR="white" POINT-SIZE="12"><B>CreditoEnergiaDAO</B></FONT></TD></TR>
+            <TR><TD ALIGN="LEFT" BALIGN="LEFT">+ inserir()<BR/>+ atualizarSaldo()</TD></TR>
+        </TABLE>>];
+
+        OfertaVendaDAO [label=<
+        <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4" COLOR="#c0392b">
+            <TR><TD BGCOLOR="#c0392b"><FONT COLOR="white" POINT-SIZE="12"><B>OfertaVendaDAO</B></FONT></TD></TR>
+            <TR><TD ALIGN="LEFT" BALIGN="LEFT">+ inserir()<BR/>+ atualizarPreco()<BR/>+ resumoPorUnidade()</TD></TR>
+        </TABLE>>];
+
+        TransacaoDAO [label=<
+        <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4" COLOR="#c0392b">
+            <TR><TD BGCOLOR="#c0392b"><FONT COLOR="white" POINT-SIZE="12"><B>TransacaoDAO</B></FONT></TD></TR>
+            <TR><TD ALIGN="LEFT" BALIGN="LEFT">+ inserir()<BR/>+ relatorioPorCentro()</TD></TR>
+        </TABLE>>];
+    }
+
+    // ================= MODEL =================
+    subgraph cluster_model {
+        label=<<FONT POINT-SIZE="14"><B>model</B></FONT>>;
+        labelloc="t"; style="rounded"; color="#2e8b57"; penwidth=1.8; margin=12;
+        fontname="DejaVu Sans";
+
+        Usuario [label=<
+        <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4" COLOR="#2e8b57">
+            <TR><TD BGCOLOR="#2e8b57"><FONT COLOR="white" POINT-SIZE="12"><I><B>Usuario</B></I></FONT><BR/><FONT COLOR="#d8f0e2" POINT-SIZE="9">{abstract}</FONT></TD></TR>
+            <TR><TD ALIGN="LEFT" BALIGN="LEFT">- id : int<BR/>- nome, email : String<BR/>- senhaHash, senhaSalt : String<BR/>- cidade, uf : String</TD></TR>
+            <TR><TD ALIGN="LEFT" BALIGN="LEFT">+ <I>getTipo()</I><BR/>+ <I>podeOfertar()</I><BR/>+ <I>podeComprar()</I><BR/>+ novoPerfil(tipo) : Usuario</TD></TR>
+        </TABLE>>];
+
+        Gerador [label=<
+        <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4" COLOR="#2e8b57">
+            <TR><TD BGCOLOR="#2e8b57"><FONT COLOR="white" POINT-SIZE="12"><B>Gerador</B></FONT></TD></TR>
+            <TR><TD ALIGN="LEFT" BALIGN="LEFT">+ podeOfertar() : true<BR/>+ podeComprar() : false</TD></TR>
+        </TABLE>>];
+
+        Consumidor [label=<
+        <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4" COLOR="#2e8b57">
+            <TR><TD BGCOLOR="#2e8b57"><FONT COLOR="white" POINT-SIZE="12"><B>Consumidor</B></FONT></TD></TR>
+            <TR><TD ALIGN="LEFT" BALIGN="LEFT">+ podeOfertar() : false<BR/>+ podeComprar() : true</TD></TR>
+        </TABLE>>];
+
+        Prosumidor [label=<
+        <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4" COLOR="#2e8b57">
+            <TR><TD BGCOLOR="#2e8b57"><FONT COLOR="white" POINT-SIZE="12"><B>Prosumidor</B></FONT></TD></TR>
+            <TR><TD ALIGN="LEFT" BALIGN="LEFT">+ podeOfertar() : true<BR/>+ podeComprar() : true</TD></TR>
+        </TABLE>>];
+
+        CentroDistribuicao [label=<
+        <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4" COLOR="#2e8b57">
+            <TR><TD BGCOLOR="#2e8b57"><FONT COLOR="white" POINT-SIZE="12"><B>CentroDistribuicao</B></FONT></TD></TR>
+            <TR><TD ALIGN="LEFT" BALIGN="LEFT">- id : int<BR/>- nome, cidade, uf : String<BR/>- capacidadeMwh : double</TD></TR>
+        </TABLE>>];
+
+        UnidadeConsumidora [label=<
+        <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4" COLOR="#2e8b57">
+            <TR><TD BGCOLOR="#2e8b57"><FONT COLOR="white" POINT-SIZE="12"><B>UnidadeConsumidora</B></FONT></TD></TR>
+            <TR><TD ALIGN="LEFT" BALIGN="LEFT">- id, usuarioId : int<BR/>- centroDistribuicaoId : int<BR/>- numeroUc, endereco : String<BR/>- capacidadeGeracaoKwp : double</TD></TR>
+        </TABLE>>];
+
+        RegistroEnergia [label=<
+        <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4" COLOR="#2e8b57">
+            <TR><TD BGCOLOR="#2e8b57"><FONT COLOR="white" POINT-SIZE="12"><B>RegistroEnergia</B></FONT></TD></TR>
+            <TR><TD ALIGN="LEFT" BALIGN="LEFT">- id, unidadeId : int<BR/>- mesReferencia : String<BR/>- energiaGeradaKwh : double<BR/>- energiaConsumidaKwh : double<BR/>- excedenteKwh : double</TD></TR>
+        </TABLE>>];
+
+        CreditoEnergia [label=<
+        <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4" COLOR="#2e8b57">
+            <TR><TD BGCOLOR="#2e8b57"><FONT COLOR="white" POINT-SIZE="12"><B>CreditoEnergia</B></FONT></TD></TR>
+            <TR><TD ALIGN="LEFT" BALIGN="LEFT">- id, unidadeId, registroId : int<BR/>- quantidadeKwh : double<BR/>- quantidadeDisponivelKwh : double<BR/>- dataValidade, status : String</TD></TR>
+        </TABLE>>];
+
+        OfertaVenda [label=<
+        <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4" COLOR="#2e8b57">
+            <TR><TD BGCOLOR="#2e8b57"><FONT COLOR="white" POINT-SIZE="12"><B>OfertaVenda</B></FONT></TD></TR>
+            <TR><TD ALIGN="LEFT" BALIGN="LEFT">- id, creditoId, vendedorId : int<BR/>- centroDistribuicaoId : int<BR/>- quantidadeKwh : double<BR/>- quantidadeDisponivelKwh : double<BR/>- precoKwh : double<BR/>- status, dataCriacao : String</TD></TR>
+        </TABLE>>];
+
+        Transacao [label=<
+        <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4" COLOR="#2e8b57">
+            <TR><TD BGCOLOR="#2e8b57"><FONT COLOR="white" POINT-SIZE="12"><B>Transacao</B></FONT></TD></TR>
+            <TR><TD ALIGN="LEFT" BALIGN="LEFT">- id, ofertaId, compradorId : int<BR/>- quantidadeKwh : double<BR/>- valorTotal : double<BR/>- dataTransacao : String</TD></TR>
+        </TABLE>>];
+    }
+
+    // ================= RELACIONAMENTOS =================
+    // Composicao: Handler possui Service / DAO
+    edge [style=solid, dir=both, arrowtail=diamond, arrowhead=none, color="#1f6f8b"];
+    LoginHandler       -> AutenticacaoService;
+    UnidadeHandler     -> UnidadeService;
+    EnergiaHandler     -> EnergiaService;
+    MarketplaceHandler -> MarketplaceService;
+    VendasHandler      -> MarketplaceService;
+    ComprasHandler     -> RelatorioService;
+    RelatorioHandler   -> RelatorioService;
+
+    // Composicao: Service possui DAO
+    edge [color="#7d3c98"];
+    AutenticacaoService -> UsuarioDAO;
+    EnergiaService      -> RegistroEnergiaDAO;
+    EnergiaService      -> CreditoEnergiaDAO;
+    MarketplaceService  -> CreditoEnergiaDAO;
+    MarketplaceService  -> OfertaVendaDAO;
+    MarketplaceService  -> TransacaoDAO;
+    RelatorioService    -> TransacaoDAO;
+    UnidadeService      -> UnidadeConsumidoraDAO;
+    UnidadeService      -> OfertaVendaDAO;
+    MarketplaceService  -> UnidadeConsumidoraDAO;
+
+    // Dependencia: ServidorWeb registra os Handlers
+    edge [color="#95a5a6"];
+    ServidorWeb -> LoginHandler;
+    ServidorWeb -> UnidadeHandler;
+    ServidorWeb -> EnergiaHandler;
+    ServidorWeb -> MarketplaceHandler;
+    ServidorWeb -> VendasHandler;
+    ServidorWeb -> ComprasHandler;
+    ServidorWeb -> RelatorioHandler;
+
+    // ---- Herança (generalização) ----
+    edge [style=solid, dir=forward, arrowtail=none, arrowhead=onormal, color="#333333"];
+    Gerador    -> Usuario;
+    Consumidor -> Usuario;
+    Prosumidor -> Usuario;
+
+    UsuarioDAO            -> AbstractDAO;
+    CentroDistribuicaoDAO -> AbstractDAO;
+    UnidadeConsumidoraDAO -> AbstractDAO;
+    RegistroEnergiaDAO    -> AbstractDAO;
+    CreditoEnergiaDAO     -> AbstractDAO;
+    OfertaVendaDAO        -> AbstractDAO;
+    TransacaoDAO          -> AbstractDAO;
+
+    // Uma única dependência de cluster a cluster, no lugar das sete individuais
+    edge [style=dashed, dir=forward, arrowtail=none, arrowhead=vee, color="#c0392b",
+          fontname="DejaVu Sans", fontsize=11, minlen=2];
+    UsuarioDAO -> Usuario [ltail=cluster_dao, lhead=cluster_model, label="mapeia"];
+
+    NotaDAO [shape=note, style=filled, fillcolor="#fdf6e3", color="#b8860b",
+             fontname="DejaVu Sans", fontsize=11, margin="0.22,0.16",
+             label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0"><TR><TD ALIGN="LEFT" BALIGN="LEFT"><B>Correspondência DAO &#8594; entidade</B><BR/><BR/>Cada DAO concreta manipula a entidade de mesmo nome<BR/>(UsuarioDAO &#8594; Usuario, OfertaVendaDAO &#8594; OfertaVenda, ...),<BR/>convertendo-a no método <I>mapear()</I> que sobrescreve<BR/>de AbstractDAO&lt;T&gt;.<BR/><BR/>Dependências omitidas no traçado por legibilidade.</TD></TR></TABLE>>];
+}
